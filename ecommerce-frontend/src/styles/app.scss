@@ -35,6 +35,7 @@ $color3: rgb(0, 104, 136);
 
 @import "admin-styles/mixin";
 
+@import "home";
 @import "admin-styles/dashboard";
 @import "admin-styles/products";
 @import "admin-styles/chart";
@@ -43,7 +44,7 @@ $color3: rgb(0, 104, 136);
 
 .header {
   @include flex(row, flex-end, stretch, 1.2rem);
-padding: 1.25rem;
+  padding: 1.25rem;
   a {
     color: $color2;
     letter-spacing: 2px;
