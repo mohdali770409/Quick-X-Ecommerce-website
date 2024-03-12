@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy } from "react";
 import Loading from "./components/loading";
 import Header from "./components/header";
+
 const Home = lazy(() => import("./pages/home"));
 const Cart = lazy(() => import("./pages/cart"));
 const Search = lazy(() => import("./pages/search"));
+const Shipping = lazy(() => import("./pages/shipping"));
 
 // admin routes importing
 const Dashboard = lazy(() => import("./pages/admin/dashboard"));
@@ -35,7 +37,10 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/" />
+          {/* logged In user routes */}
+          <Route>
+            <Route path="/shipping" element={<Shipping />} />
+          </Route>
           {/* admin routes  */}
           <Route
           // element={
