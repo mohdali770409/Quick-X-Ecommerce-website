@@ -3,12 +3,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy } from "react";
 import Loading from "./components/loading";
 import Header from "./components/header";
-import { ImOpt } from "react-icons/im";
+
 
 const Home = lazy(() => import("./pages/home"));
 const Cart = lazy(() => import("./pages/cart"));
 const Search = lazy(() => import("./pages/search"));
 const Shipping = lazy(() => import("./pages/shipping"));
+const Orders = lazy(() => import("./pages/orders"));
 
 const Login = lazy(() => import("./pages/login"));
 
@@ -41,10 +42,11 @@ const App = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/search" element={<Search />} />
           {/* logged out user */}
-          <Route path="/login" element = {<Login/>} />
+          <Route path="/login" element={<Login />} />
           {/* logged In user routes */}
           <Route>
             <Route path="/shipping" element={<Shipping />} />
+          <Route path="/orders" element={<Orders />}></Route>
           </Route>
           {/* admin routes  */}
           <Route
