@@ -20,6 +20,7 @@ export const newProduct = async (
       success: false,
       message: "Please add photo",
     });
+
   if (!name || !category || !price || !stock) {
     rm(photo.path, (error) => {
       console.log("photo deleted ");
