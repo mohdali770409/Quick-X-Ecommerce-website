@@ -189,7 +189,7 @@ export const updateProduct = async (req: Request, res: Response) => {
     if (stock) product.stock = stock;
 
     await product.save();
-    await invalidateCache({ product: true });
+    await invalidateCache({ product: true,productId:String(product._id) });
     return res.status(200).json({
       success: true,
       product,
@@ -214,7 +214,7 @@ export const deleteProduct = async (req: Request, res: Response) => {
       console.log("product picture deleted");
     });
     await product.deleteOne();
-    await invalidateCache({ product: true });
+    await invalidateCache({ product: true,productId:String(product._id) });
     return res.status(200).json({
       success: true,
       message: "product deleted successfully",
