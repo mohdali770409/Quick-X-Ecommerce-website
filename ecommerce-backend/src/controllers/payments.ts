@@ -1,6 +1,33 @@
 import { resolveSoa } from "dns";
 import { Request, Response } from "express";
 import { Coupon } from "../models/coupon.js";
+import { stripe } from "../app.js";
+
+export const createPaymentIntent = async (req: Request, res: Response) => {
+  try {
+    const { amount } = req.body;
+    if (!amount)
+      return res.status(404).json({
+        success: false,
+        message: "please enter amount",
+      });
+
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: Number(amount) * 100,
+      currency: "inr",
+    });
+    console.log(paymentIntent);
+    return res.status(201).json({
+      success: true,
+      clientSecret: paymentIntent.client_secret,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error!,
+    });
+  }
+};
 
 export const newCoupon = async (req: Request, res: Response) => {
   try {
