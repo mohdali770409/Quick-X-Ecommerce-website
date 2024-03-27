@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy } from "react";
 import Loading from "./components/loading";
 import Header from "./components/header";
-
+import { Toaster } from "react-hot-toast";
 
 const Home = lazy(() => import("./pages/home"));
 const Cart = lazy(() => import("./pages/cart"));
@@ -46,7 +46,7 @@ const App = () => {
           {/* logged In user routes */}
           <Route>
             <Route path="/shipping" element={<Shipping />} />
-          <Route path="/orders" element={<Orders />}></Route>
+            <Route path="/orders" element={<Orders />}></Route>
           </Route>
           {/* admin routes  */}
           <Route
@@ -84,6 +84,7 @@ const App = () => {
           ;
         </Routes>
       </Suspense>
+      <Toaster/>
     </Router>
   );
 };
