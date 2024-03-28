@@ -7,7 +7,7 @@ import {
   deleteUser,
 } from "../controllers/user.js";
 import { adminOnly } from "../middlewares/auth.js";
-
+console.log("reached above new user route finally");
 app.post("/new", newUser);
 
 app.get("/all", adminOnly, getAllUsers);

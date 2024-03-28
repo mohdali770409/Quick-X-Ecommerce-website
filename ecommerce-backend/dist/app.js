@@ -10,8 +10,11 @@ import NodeCache from "node-cache";
 import { config } from "dotenv";
 import morgan from "morgan";
 import Stripe from "stripe";
+import cors from "cors";
 const app = express();
 app.use(express.json());
+app.use(morgan("dev"));
+app.use(cors());
 config({
     path: "./.env",
 });
@@ -27,7 +30,6 @@ app.use("/api/v1/product", productRoute);
 app.use("/api/v1/order", orderRoute);
 app.use("/api/v1/payment", paymentRoute);
 app.use("/api/v1/dashboard", dashboardRoute);
-app.use(morgan("dev"));
 app.use("/uploads", express.static("uploads"));
 app.use(errorMiddleware);
 app.listen(port, () => {

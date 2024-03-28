@@ -10,10 +10,14 @@ import {
   processOrder,
   deleteOrder,
 } from "../controllers/order.js";
-
+console.log("reached above new order");
 app.post("/new", newOrder);
 app.get("/my", myOrders);
 app.get("/all", adminOnly, allOrders);
-app.route("/:id").get(getSingleOrder).put(adminOnly,processOrder).delete(adminOnly,deleteOrder);
+app
+  .route("/:id")
+  .get(getSingleOrder)
+  .put(adminOnly, processOrder)
+  .delete(adminOnly, deleteOrder);
 
 export default app;

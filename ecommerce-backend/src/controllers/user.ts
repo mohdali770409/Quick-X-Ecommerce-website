@@ -9,8 +9,9 @@ export const newUser = async (
   next: NextFunction
 ) => {
   try {
+    console.log("reached above req body");
     const { name, email, photo, gender, _id, dob } = req.body;
-
+    console.log(name, email, photo, gender, _id, dob);
     let user = await User.findById(_id);
     if (user) {
       return res.status(200).json({
